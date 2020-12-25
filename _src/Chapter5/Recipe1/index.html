@@ -1,0 +1,42 @@
+<html>
+	<head>
+		<title>Add rows dynamically</title>
+		<style type="text/css">
+			fieldset{width:450px;}
+			ul{padding:2px;list-style:none;}
+			label{float:left;width:100px;}
+		</style>
+	</head>
+	<body>
+		<form action="process.php" method="post">
+			<fieldset>
+				<legend>Websites you visit daily</legend>
+				<ul id="sites">
+					<li>
+						<label>Name</label><input type="text" value="" name="sites[]"/>
+					</li>
+				</ul>
+				<input type="button" id="add" value="Add More"/>
+			</fieldset>
+		</form>
+		<script type="text/javascript" src="../jquery.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function ()
+			{
+				$('#add').click(function()
+				{
+					var str = '<li>';
+					str+= '<label>Name</label><input type="text" value=""  name="sites[]"/> ';
+					str+= '<input type="button" value="remove" class="remove"/>';
+					str+= '</li>';
+					$('#sites').append(str);
+				});
+				
+				$('.remove').live('click', function()
+				{
+					$(this).parent('li').remove();
+				});
+			});
+		</script>
+	</body>
+</html>

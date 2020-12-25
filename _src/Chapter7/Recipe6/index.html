@@ -1,0 +1,76 @@
+<html>
+	<head>
+		<title>Tabs</title>
+		<link rel="stylesheet" type="text/css" href="tabs.css" media="screen" />	
+	</head>
+	<body>
+		<div class="newTabHolder">
+			<h4>Add a New Tab</h4>
+			<label for="tabName">Tab Name</label>
+			<input type="text" id="tabName"/>
+			<label for="tabHTML">Tab HTML</label>
+			<textarea id="tabHTML" rows="10"></textarea>
+			<input type="button" id="addTab" value="Add New Tab"/><br/>
+			<span id="error"></span>
+		</div>
+		<div class="tabContainer">
+			<ul id="tabHeader">
+				<li>Tab 1</li>
+				<li>Tab 2</li>
+				<li>Tab 3</li>
+			</ul>
+			<div id="contents">
+				<div class="tabContent">
+				  <h3>Tab 1</h3>
+				  Content for tab1
+				</div>
+				<div class="tabContent">
+					<h3>Tab 2</h3>
+					 Content for Tab 2
+				</div>
+				<div class="tabContent">
+					<h3>Tab 3</h3>
+					 Content for Tab 3
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="../jquery.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function ()
+			{
+				$('.tabContent:gt(0)').hide();
+				$('#tabHeader > li:eq(0)').addClass('active');
+				$('#tabHeader > li').live('click',showHideTabs);
+				$('#addTab').click(addTab);				
+
+				function showHideTabs()
+				{
+					var allLi = $('#tabHeader > li').removeClass('active');
+					$(this).addClass('active');
+					var index = allLi.index(this);
+					$('.tabContent:visible').hide();
+					$('.tabContent:eq('+index+')').show();
+				}
+				
+				function addTab()
+				{
+					if(jQuery.trim($('#tabName').val())!= '' && jQuery.trim($('#tabHTML').val()) != '')
+					{
+						$('#error').empty();
+						$('#tabHeader').append('<li>' + $('#tabName').val() + '</li>');
+						$('#contents').append('<div class="tabContent hide">' + $('#tabHTML').val() + '</div>');
+						//display the new tab by default
+						$('#tabHeader > li').removeClass('active');
+						$('#tabHeader > li:last').addClass('active');
+						$('.tabContent:visible').hide();
+						$('.tabContent:last').show();
+					}
+					else
+					{
+						$('#error').html('Please provide a Tab Name.');
+					}
+				}
+			});
+		</script>
+	</body>
+</html>

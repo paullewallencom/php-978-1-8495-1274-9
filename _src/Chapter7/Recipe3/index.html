@@ -1,0 +1,74 @@
+<html>
+	<head>
+		<title>Accordion Menu</title>
+		<style type="text/css">
+			body{ margin:0px auto;font-family:"trebuchet MS",Arial;font-size:14px;width:900px; }
+			.header{ background-color:#FA6766;color:#fff;height:100px;text-align:center; }
+			.accordion{ border:1px solid #FA6766;width:300px;}
+			.accordion > h1{cursor:pointer;font-size:14px;font-weight:bold;text-align:center;}
+			.active{color:#ff0000;}
+			.container{background-color:#F0F8FF;padding:5px;text-align:left;width:288px;}
+			p,div{ padding:0pt;margin:0pt; }
+			#leftPanel{ float: left; width: 300px; }
+			#rightPanel{ float: left;margin: 0pt 0pt 0pt 10px; padding: 0pt;text-align:justify;width: 590px; }
+		</style>
+	</head>
+	<body>
+		<div id="main">
+			<div class="header">
+				<h1>My Awesome Page</h1>
+			</div>
+			<div class="content">
+				<div id="leftPanel">
+					<div class="accordion">
+						<h1>PHP</h1>
+						<div class="container">PHP is a widely used, server side scripting language that is used to ...<a href="data.php?page=php">Read More</a></div>
+					</div>
+					<div class="accordion">
+						<h1>jQuery</h1>
+						<div class="container">From the jQuery site: jQuery is a fast and concise JavaScript Library that...<a href="data.php?page=jQuery">Read More</a></div>
+					</div>
+					<div class="accordion">
+						<h1>AJAX</h1>
+						<div class="container">Ajax is a group of web development techniques used on the browser...<a href="data.php?page=ajax">Read More</a></div>
+					</div>
+		
+					<div class="accordion">
+						<h1>JSON</h1>
+						<div class="container">JSON which stands for JavaScript Object Notation can be defined as...<a href="data.php?page=json">Read More</a></div>
+					</div>
+		
+				</div>
+				
+				<div id="rightPanel">
+					<h2>Select a term from the left menu to know more about it.</h2>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="../jquery.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function ()
+			{
+				$('.container').hide();
+				$('.accordion >h1').click(function()
+				{
+					$('h1.active').removeClass('active');
+					$(".container:visible").slideUp('fast'); 
+					$(this).addClass('active').next('div').slideToggle('fast');
+				});
+				
+				$('.container > a').click(getData);
+				
+				function getData()
+				{
+					var url = ($(this).attr('href'));
+					$.get(url, {}, function(data)
+					{
+						$('#rightPanel').html(data);
+					});
+					return false;
+				};
+			});
+		</script>
+	</body>
+</html>

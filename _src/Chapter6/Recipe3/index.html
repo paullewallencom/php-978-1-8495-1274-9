@@ -1,0 +1,62 @@
+<html>
+	<head>
+		<title>Accordion</title>
+		<style type="text/css">
+			body{ margin:50px auto;font-family:"trebuchet MS",Arial;font-size:14px;width:500px;}
+			
+			div{ border:1px solid #FA6766;width:500px;}
+			
+			h1{cursor:pointer;font-size:20px;font-weight:bold;text-align:center;}
+			
+			.active{color:red;}
+			
+			.container{background-color:#F0F8FF;padding:5px;text-align:justify;width:488px;}
+		</style>
+	</head>
+	<body>
+		<div>
+			<div>
+				<h1 href="#">PHP: PHP Hypertext Preprocessor</h1>
+				<div class="container">PHP is a widely used, server side scripting language that is used to create dynamic web applications. PHP is very much popular among web developers and many top websites use PHP for their sites.</div>
+			</div>
+
+			<div>
+				<h1 href="#">jQuery - The write less, do more javascript</h1>
+				<div class="container">From the jQuery site: jQuery is a fast and concise JavaScript Library that simplifies HTML document traversing, event handling, animating, and Ajax interactions for rapid web development. jQuery is designed to change the way that you write JavaScript.</div>
+			</div>
+
+			<div>
+				<h1 href="#">AJAX - Asynchronous JavaScript and XML</h1>
+				<div class="container">Ajax is a group of web development techniques used on the client-side (browser) to create interactive web applications. AJAX can be used to retrieve data from the server  asynchronously in the background. XMLHttpRequest objects is generally used to contact the server side.</div>
+			</div>
+
+			<div>
+				<h1 href="#">JSON - JavaScript Object Notation</h1>
+				<div class="container">
+					<p>JSON which stands for JavaScript Object Notation can be defined as a lightweight data interchange format. It is also said a fat-free lightweight alternative to xml. It is a text format which is programming language independent and is native data form of JavaScript. It is lighter and faster than xml. The credit to make json popular goes to Douglas Crockford.
+					</p>
+					<p>
+					Since JSON is the native data form of JavaScript, it can be used on the client side in an Ajax application more easily then XML. 
+					</p>
+				</div>
+			</div>
+
+		</div>
+		<script type="text/javascript" src="../jquery.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function ()
+			{
+				$('.container').hide();
+				
+				$('h1').click(function()
+				{
+					var h1 = $(this);
+					$('h1.active').removeClass('active');
+					h1.addClass('active');
+					$(".container:visible").slideUp('fast'); 
+					h1.next('div').slideToggle('fast');
+				});
+			});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,46 @@
+<html>
+	<head>
+		<title>Reading xml through jQuery</title></head>
+		<style type="text/css">
+			h1{ cursor:pointer;font-size:20px;}
+			ul{ display:none; list-style:none;margin:0pt;padding:0pt;}
+		</style>
+<body>
+	<div id="result"></div>
+	<script type="text/javascript" src="../jquery.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function ()
+		{
+			$('h1').live('click',function()
+			{
+				$(this).next('ul').toggle('fast');
+			});
+
+			$.ajax(
+			{
+				url: 'common.xml',
+				type: 'GET',
+				dataType: 'xml',
+				success: function(xml)
+				{
+					var str = '';
+					$(xml).find('book').each(function()
+					{
+						var book = $(this);
+						str+= '<h1>' + book.find('name').text() + '</h1>';
+						str+= '<ul>';
+						book.find('story').each(function()
+						{
+							str+= '<li>';
+							str+= $(this).find('title').text();
+							str+= '</li>';
+						});
+						str+= '</ul>';
+					});
+					$('#result').html(str);
+				}
+			});
+		});
+	</script>
+</body>
+</html>

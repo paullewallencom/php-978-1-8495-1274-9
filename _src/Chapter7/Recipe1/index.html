@@ -1,0 +1,55 @@
+<html>
+	<head>
+		<title>jQuery Menu</title>
+		<link rel="stylesheet" type="text/css" href="style.css">
+	</head>
+	<body>
+		<div>
+			<ul>
+				<li class="menuHeader about">
+					<a href="#">About us</a>
+					<ul class="menuItem">
+						<li><a href="http://google.com">Company</a></li>
+						<li><a href="#">Culture</a></li>
+						<li><a href="#">Motto</a></li>
+					</ul>
+				</li>
+				<li class="menuHeader products">
+					<a href="#">Products</a>
+					<ul class="menuItem">
+						<li><a href="#">Shopping Cart</a></li>
+						<li><a href="#">CMS</a></li>
+						<li><a href="#">Blog Software</a></li>
+					</ul>
+				</li>
+				<li class="menuHeader tech">
+					<a href="#">Technology</a>
+					<ul class="menuItem">
+						<li><a href="#">PHP</a></li>
+						<li><a href="#">JavaScript</a></li>
+						<li><a href="#">MySql</a></li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+		<script type="text/javascript" src="../jquery.js"></script>
+		<script type="text/javascript">
+		$(document).ready(function(){
+			$('ul.menuItem').hide();
+			$(".menuHeader > a").click(function(){
+				$('.menuItem:visible').slideToggle();
+				$('ul', $(this).parent()).slideToggle();
+			});
+			
+			$("li.menuHeader").hover(
+			function(){
+					$('ul', this).slideDown();
+			},
+			function(){
+					$('ul', this).slideUp();
+			});
+
+		});	
+		</script>
+	</body>
+</html>

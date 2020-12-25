@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<books>
+	<book index="1">
+		<name year="1892">The Adventures of Sherlock Holmes</name>
+		<story>
+			<title>A Scandal in Bohemia</title>
+			<quote>You see, but you do not observe. The distinction is clear.</quote>
+		</story>
+		<story>
+			<title>The Red-headed League</title>
+			<quote>It is quite a three pipe problem, and I beg that you won't speak to me for fifty minutes.</quote>
+		</story>
+		<story>
+			<title>The Man with the Twisted Lip</title>
+			<quote>It is, of course, a trifle, but there is nothing so important as trifles.</quote>
+		</story>
+	</book>
+	<book index="2">
+		<name year="1927">The Case-book of Sherlock Holmes</name>
+		<story>
+			<title>The Adventure of the Three Gables</title>
+			<quote>I am not the law, but I represent justice so far as my feeble powers go.</quote>
+		</story>
+		<story>
+			<title>The Problem of Thor Bridge</title>
+			<quote>We must look for consistency. Where there is a want of it we must suspect deception.</quote>
+		</story>
+		<story>
+			<title>The Adventure of Shoscombe Old Place</title>
+			<quote>Dogs don't make mistakes.</quote>
+		</story>
+	</book>
+	<book index="3">
+		<name year="1893">The Memoirs of Sherlock Holmes</name>
+		<story>
+			<title>The Yellow Face</title>
+			<quote>Any truth is better than indefinite doubt.</quote>
+		</story>
+		<story>
+			<title>The Stockbroker's Clerk</title>
+			<quote>Results without causes are much more impressive. </quote>
+		</story>
+		<story>
+			<title>The Final Problem</title>
+			<quote>If I were assured of your eventual destruction I would, in the interests of the public, cheerfully accept my own.</quote>
+		</story>
+	</book>
+</books>

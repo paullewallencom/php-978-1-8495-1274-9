@@ -1,0 +1,36 @@
+<html>
+	<head>
+		<title>getScript example</title>
+		<style type="text/css">
+		p
+		{
+			width:343px;
+			border:1px solid black;
+		}
+		</style>
+	</head>
+	<body>
+		<p id="container">
+			Try clicking on any of the last 3 buttons. They will do nothing until the script is loaded.
+		</p>
+		<input type="button" class="loader" value="Load Script"/>
+		<input type="button" class="bold" value="Bold"/>
+		<input type="button" class="color" value="Change color"/>
+		<input type="button" class="change" value="Change text"/>
+
+		<script type="text/javascript" src="../jquery.js"></script>
+		<script type="text/javascript">
+		$(document).ready(function ()
+		{
+			$('input:button:first').click(function(aaa)
+			{
+				$.getScript('new.js', function() 
+				{
+					alert('Script loaded');
+					addEvents();
+				});
+			});
+		});
+		</script>
+	</body>
+</html> 

@@ -1,0 +1,58 @@
+<html>
+	<head>
+		<title>Create a tag cloud</title>
+		<style type="text/css">
+		body
+		{
+			font-family:"Trebuchet MS",Verdana,Arial;
+		}
+		div
+		{
+			width:600px;
+			border:1px solid;
+			float:left;
+			position:relative;
+		}
+		a
+		{
+			float:left;
+			text-decoration:none;
+			padding:0px 5px;
+			
+		}
+		span
+		{
+			font-size:12px;
+		}
+		</style>
+	</head>
+	<body>
+		<h3>Popularity of Indian Tourist Destinations</h3>
+		<div id="cloud"></div>
+		
+		<script type="text/javascript" src="../jquery.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function()
+			{
+				$.getJSON(
+					'tags.php',
+					{},
+					createTagCloud
+				);
+			});
+			
+			function createTagCloud(response)
+			{
+				var str = '', i=0;
+				$.each(response.tags, function(index, tag)
+				{
+					var color = i%2 == 0 ? 'color:#A52A2A' : 'color:#6495ED';
+					var fontSize = ((parseInt(tag.rating,10)/30));
+					str+= '<a href="#" style="font-size:'+fontSize+'em;'+color+'" title="' + tag.city + '">' + tag.city + '</a>';
+					i++;
+				});
+				$('#cloud').html(str);
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,125 @@
+<html>
+	<head>
+		<title>Autocomplete</title>
+		<link rel="stylesheet" type="text/css" href="style.css">
+	</head>
+	<body>
+		<div class="autosuggest">
+			<input type="text" id="suggest"/>
+			<ul id="suggestions">
+			</ul>
+			<img src="ajax-loader.gif" alt="loading" title="loading" id="loader"/>
+			<span id="error"></span>
+		</div>
+<script type="text/javascript" src="../jquery.js"></script>
+<script type="text/javascript">
+$(document).ready(function()
+  {
+    var xhr;
+    $('#suggest').keyup(getSuggestions);
+    $('#suggest').keydown(navigateList);
+    $('#suggestions>li').live('mouseover mouseout click', listHover);
+
+    function getSuggestions(event)
+    {
+      var value = jQuery.trim($(this).val());
+      if(value == '' || event.which == 27)
+      {
+        $('#suggestions').empty().hide();
+        $('#loader').hide();
+      }
+
+      if((event.which >= 65 && event.which <= 90) || event.which == 8 || event.which == 46)
+      {
+        $('#loader').show();
+        if(xhr) xhr.abort();
+        if(value.length >= 1)
+        {
+          xhr = $.getJSON
+           (
+            'suggestions.php',
+            { input : value },
+            showSuggestions
+          );
+        }
+        else
+        {
+          $('#loader').hide();
+        }
+      }
+    }
+    
+    function showSuggestions(data)
+    {
+      if(data == false)
+      {
+        $('#error').html('No results').show();
+        $('#suggestions').empty().hide();
+      }
+      else
+      {
+        var str = '';
+        $('#error').empty().hide();
+        for(var i=0; i < data.length; i++)
+        {
+          str+= '<li>'+data[i]+'</li>';
+        }
+        $('#suggestions').html(str).show();
+      }
+      $('#loader').hide();
+    }
+
+    
+    function navigateList(event)
+    {
+      switch(event.which)
+      {
+        case 38:  //up arrow
+          if($('#suggestions>li.active').length > 0)
+          {
+            $('#suggestions>li.active').removeClass('active').prev().addClass('active');
+          }
+          else
+          {
+            $('#suggestions>li:last').addClass('active');
+          }
+        break;
+        
+        case 40:  //down arrow
+          if($('#suggestions>li.active').length > 0)
+          {
+            $('#suggestions>li.active').removeClass('active').next().addClass('active');
+          }
+          else
+          {
+            $('#suggestions>li:first').addClass('active');
+          }
+        break;
+
+        case 13:	//enter
+        	$('#suggest').val($('#suggestions>li.active').html());
+          $('#suggestions').empty().hide();
+        break;
+      }
+    }
+    
+    function listHover(event)
+    {
+      if (event.type == 'mouseover') 
+      {
+        $('#suggestions>li.active').removeClass('active');
+      }
+      $(this).toggleClass('active');
+      
+      if(event.type == 'click')
+      {
+        $('#suggest').val($(this).html());
+        $(this).parent().empty().hide();
+        $('#suggest').focus();
+      }
+    }
+  });
+
+</script>
+	</body>
+</html>

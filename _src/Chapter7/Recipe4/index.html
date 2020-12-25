@@ -1,0 +1,101 @@
+<html>
+	<head>
+		<title>Floating Menu</title>
+		<style type="text/css">
+			body{ font-family:"trebuchet MS",Arial;font-size:14px;width:500px;}
+			.longP,ul
+			{
+				margin:0;	padding:0;
+			}
+			ul
+			{
+				list-style:none;
+			}
+			.longP
+			{
+				border:1px solid black;
+				height:1000px;
+				width:300px;
+			}
+			#floatingBox
+			{
+				border:1px solid black;
+				padding:10px;
+				position:absolute;
+				right:50px;
+				width:200px;
+			}
+			.menu
+			{
+				font-weight:bold;
+				margin-top:10px;
+			}
+			.menuItem
+			{
+				margin:0;
+				padding:10px;
+			}
+			span
+			{
+				color:#FA6766;
+				cursor:pointer;
+				text-decoration:underline;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="floatingBox">
+			<ul>
+				<li>
+					<span class="menu">Menu Item 1</span>
+					<ul class="menuItem">
+						<li><a href="http://google.com">Sub Link 1</a></li>
+						<li><a href="http://google.com">Sub Link 2</a></li>
+						<li><a href="http://google.com">Sub Link 3</a></li>
+					</ul>
+				</li>
+				<li>
+					<span class="menu">Menu Item 2</span>
+					<ul class="menuItem">
+						<li>
+							<span class="menu">Sub Menu</span>
+							<ul class="menuItem">
+								<li>
+									<span class="menu">3rd Level Menu</span>
+									<ul class="menuItem">
+										<li><a href="http://google.com">Sub Link 1</a></li>
+										<li><a href="http://google.com">Sub Link 1</a></li>
+										<li><a href="http://google.com">Sub Link 1</a></li>
+									</ul>
+
+								</li>
+							</ul>
+						</li>
+						<li><a href="http://google.com">Sub Link 1</a></li>
+						<li><a href="http://google.com">Sub Link 1</a></li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+		<p class="longP">
+			This is paragraph with height set to 1000 to create a long page
+		</p>
+		<script type="text/javascript" src="../jquery.js"></script>
+		<script type="text/javascript">
+		$(document).ready(function ()
+		{
+			$('.menuItem').hide();
+			$(window).scroll(floatDiv);
+			floatDiv();
+		});
+		function floatDiv()
+		{
+			$('#floatingBox').animate({top: $(document).scrollTop() + "px"},{duration:250,queue:false});
+		}
+		$('span.menu').click(function()
+		{
+			$(this).next('ul').slideToggle('fast');
+		});
+		</script>
+	</body>
+</html>

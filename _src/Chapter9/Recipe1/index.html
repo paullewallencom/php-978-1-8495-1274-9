@@ -1,0 +1,100 @@
+<html>
+	<head>
+		<title>Flickr Image Search</title>
+		<style type="text/css">
+			body { font-family:"Trebuchet MS",verdana,arial;width:900px; }
+			fieldset { width:333px; }
+			ul{	margin:0;padding:0;list-style:none; }
+			li{	padding:5px; }
+			span{ display:block;float:left;width:150px; }
+			#results li{ float:left; }
+			.error{ font-weight:bold; color:#ff0000; }
+		</style>
+	</head>
+	<body>
+		<form id="searchForm">
+			<fieldset>
+				<legend>Search Criteria</legend>
+				<ul>
+					<li>
+						<span>Tag</span>
+						<input type="text" name="tag" id="tag"/>
+					</li>
+					<li>
+						<span>Number of images</span>
+						<select name="numImages" id="numImages">
+							<option value="20">20</option>
+							<option value="30">30</option>
+							<option value="40">40</option>
+							<option value="50">50</option>
+						</select>
+					</li>
+					<li>
+						<span>Select a size</span>
+						<select id="size">
+							<option value="s">Small</option>
+							<option value="t">Thumbnail</option>
+							<option value="-">Medium</option>
+							<option value="b">Large</option>
+							<option value="o">Original</option>
+						</select>
+					</li>
+					<li>
+						<input type="button" value="Search" id="search"/>
+					</li>
+				</ul>
+			</fieldset>
+		</form>
+		<ul id="results">
+		</ul>
+	<script type="text/javascript" src="../jquery.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			$('#search').click(function()
+			{
+				if($.trim($('#tag').val()) == '')
+				{
+					$('#results').html('<li class="error">Please provide a search criteria</li>');
+					return;
+				}
+				$.post(
+					'search.php',
+					$('#searchForm').serialize(),
+					showImages,
+					'json'
+				);
+			});
+			
+			function showImages(response)
+			{
+				if(response['stat'] == 'ok')
+				{
+					var photos = response.photos.photo;
+					var str= '';
+					$.each(photos, function(index,value)
+					{
+						var farmId = value.farm;
+						var serverId = value.server;
+						var id = value.id;
+						var secret = value.secret;
+						var size = $('#size').val();
+						var title = value.title;
+						
+						var imageUrl = 'http://farm' + farmId + '.static.flickr.com/' + serverId + '/' + id + '_' + secret + '_' + size + '.jpg';
+						str+= '<li>';
+						str+= '<img src="' + imageUrl + '" alt="' + title + '" />';
+						str+= '</li>';
+					});
+					
+					$('#results').html(str);
+				}
+				else
+				{
+					$('#results').html('<li class="error">an error occured</li>');
+				}
+			}
+		});
+	</script>
+	</body>
+</html>

@@ -1,0 +1,76 @@
+<html>
+	<head>
+	<title>Accessing data from a JSON</title>
+	<style type="text/css">
+	body,select,ul{ font-family:"trebuchet MS",verdana }
+	ul{ list-style::none;margin:0pt;padding:0pt;}
+	</style>
+	</head>
+	<body>
+		<h3>Select a date to view Travel Details</h3>
+		<p>
+			<select id="travelDates">
+			</select>
+			<ul>
+				<li id="origin"></li>
+				<li id="destination"></li>
+				<li id="travellers"></li>
+			</ul>
+		</p>
+		<script type="text/javascript" src="../jquery.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function ()
+			{
+				var jsonResult;
+				
+				$.get(
+					'json.php',
+					 displayData,
+					'json'
+				);
+//				$.getJSON("json.php",displayData);
+				function displayData(data)
+				{
+					jsonResult = data;
+					var str = '<option value="">select a date</option>';
+					for(var i=0; i<data.length;i++)
+					{
+						str+= '<option value="' + data[i].travelDate + '">' + data[i].travelDate + '</option>';
+					}
+					$('#travelDates').html(str);
+					$('#travelDates').change(function()
+					{
+						if($(this).val() != '')
+						{
+							displayDetails($(this).val());
+						}
+					});
+				}
+				
+				function displayDetails(selectedDate)
+				{
+					for(var i=0; i<jsonResult.length;i++)
+					{
+						var aResult = jsonResult[i];
+						if(aResult.travelDate == selectedDate)
+						{
+							$('#origin').html('<strong>Origin : </strong>'+ aResult.origin);
+							$('#destination').html('<strong>Destination : </strong>'+ aResult.destination);
+							var travellers = aResult.passengers;
+							var strTraveller = '<ul>';
+							for(var j=0; j<travellers.length;j++)
+							{
+								strTraveller+= '<li>';
+								strTraveller+= travellers[j].name;
+								strTraveller+= '</li>';
+							}
+							strTraveller+= '</ul>';
+							$('#travellers').html('<strong>Travellers : <br/></strong>'+ strTraveller);
+							break;
+						}
+					}
+				}
+			});
+		</script>
+	</body>
+</html>

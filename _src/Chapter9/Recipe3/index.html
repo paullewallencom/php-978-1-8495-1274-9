@@ -1,0 +1,75 @@
+<html>
+	<head>
+		<title>Endless Scroll</title>
+		<style type="text/css">
+			body{ font-family: "Trebuchet MS",verdana,arial;}
+			#loading{ display:none; font-weight:bold;color:#FF0000;}
+			p { padding:10px;}
+		</style>
+		
+	</head>
+	<body>
+		<div id="container">
+			<p>Test Paragraph 1</p>
+			<p>Test Paragraph 2</p>
+			<p>Test Paragraph 3</p>
+			<p>Test Paragraph 4</p>
+			<p>Test Paragraph 5</p>
+			<p>Test Paragraph 6</p>
+			<p>Test Paragraph 7</p>
+			<p>Test Paragraph 8</p>
+			<p>Test Paragraph 9</p>
+			<p>Test Paragraph 10</p>
+			<p>Test Paragraph 11</p>
+			<p>Test Paragraph 12</p>
+			<p>Test Paragraph 13</p>
+			<p>Test Paragraph 14</p>
+			<p>Test Paragraph 15</p>
+			<p>Test Paragraph 16</p>
+			<p>Test Paragraph 17</p>
+			<p>Test Paragraph 18</p>
+			<p>Test Paragraph 19</p>
+			<p>Test Paragraph 20</p>
+		</div>
+		<p id="loading">loading data... </p>
+		<script type="text/javascript" src="../jquery.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function()
+			{
+				$(window).scroll(loadData);
+			});
+			
+			var counter = 0;
+			function loadData()
+			{
+				if(counter < 5)
+				{
+					if  (isUserAtBottom())
+					{
+						getData();
+					}
+				}
+			}
+			function isUserAtBottom()
+			{
+				return ((($(document).height() - $(window).height()) - $(window).scrollTop()) <= 50) ? true : false;
+			}
+			function getData()
+			{
+				$(window).unbind('scroll');
+				$('#loading').show();
+
+				$.get(
+				'data.php',
+				{},
+				function(response)
+				{
+					counter++;
+					$('#loading').hide();
+					$('#container').append(response);
+					$(window).scroll(loadData);
+				});
+			}
+		</script>
+	</body>
+</html>

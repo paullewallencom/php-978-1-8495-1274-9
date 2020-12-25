@@ -1,0 +1,156 @@
+<html>
+	<head>
+		<title>Tabs</title>
+		<style type="text/css">
+		body
+		{
+			font-family:"Trebuchet MS",verdana;
+			margin: 50px auto;
+			width:600px;
+		}
+		.tabContainer
+		{
+			border:1px solid black;
+			float:left;
+			width:600px;
+		}
+		ul
+		{
+			float: left;
+			margin: 0pt;
+			padding: 0pt;
+			list-style: none;
+			width:600px;
+		}
+		li
+		{
+			border-left:1px solid black;
+			border-right:1px solid black;
+			cursor:pointer;
+			float:left;
+			padding:5px;
+			text-align:center;
+			width:100px;
+		}
+		.tabContent
+		{
+			border-top:1px solid black;
+			float:left;
+			height:150px;
+			padding:5px;
+			text-align:justify;
+			width:590px;
+		}
+		.active
+		{
+			background-color:#6AA63B;
+			color:white;
+		}
+		.prev{ float:left;}
+		.next{ float:right;}
+		#order
+		{
+			border:0px solid #000;
+		}
+		</style>
+	</head>
+	<body>
+		<form action="">
+			<div class="tabContainer">
+				<ul class="tabHeader">
+					<li>Name</li>
+					<li>Selections</li>
+					<li>Confirmation</li>
+				</ul>
+				<div class="contents">
+					<div class="tabContent">
+						<p>
+							<strong>Please enter your name</strong>
+							<input type="text" id="userName"/>
+						</p>
+						<input type="button" value="Next >>" class="next"/>
+					</div>
+					<div class="tabContent">
+						<p>
+							<strong>Please select a product</strong>
+							<select id="product">
+								<option>Shirt</option>
+								<option>Jeans</option>
+								<option>Shoes</option>
+							</select>
+							<br/><br/>
+							<strong>Select quantity</strong>
+							<select id="quantity">
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+							</select>
+						</p>
+						<input type="button" value="<< Previous" class="prev"/>
+						<input type="button" value="Next >>" class="next"/>
+					</div>
+					<div class="tabContent last">
+						<p>
+							<strong>Review</strong>
+							<div id="order"></div>
+						</p>
+						<input type="button" value="<< Previous" class="prev"/>
+					</div>
+				</div>
+			</div>
+		</form>
+		<script type="text/javascript" src="../jquery.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function ()
+			{
+				$('.tabContent:gt(0)').hide();
+				$('.tabHeader > li:eq(0)').addClass('active');
+				
+				$('input:button').click(function()
+				{
+					var currentTabIndex = getCurrentTabIndex(this);
+					if($(this).hasClass('prev'))
+					{
+						showHideTabs(--currentTabIndex);
+					}
+					else if($(this).hasClass('next'))
+					{
+						showHideTabs(++currentTabIndex);
+					}
+				});
+
+				function getCurrentTabIndex(el)
+				{
+					var parent = $(el).parent('.tabContent');
+					return $('.tabContent').index(parent);
+				}
+				function showHideTabs(index)
+				{
+					$('.tabHeader > li.active').removeClass('active');
+					$('.tabHeader > li:eq('+index+')').addClass('active');
+					
+					$('.tabContent:visible').hide();
+					$('.tabContent:eq('+index+')').show();
+
+					if($('.tabContent:eq('+index+')').hasClass('last'))
+					{
+						displaySelectedValues();	
+					}
+				}
+				function displaySelectedValues()
+				{
+					var name = $('#userName').val();
+					var product = $('#product').val();
+					var quantity = $('#quantity').val();
+					var strHtml = 'Hello ' + name + ', ';
+					strHtml+= 'Please confirm your selection:<br/>';
+					strHtml+= '<strong>Item:</strong> ' + product;
+					strHtml+= '<br/>';
+					strHtml+= '<strong>Quantity:</strong> ' + quantity;
+					strHtml+= '</ul>';
+					$('#order').html(strHtml);
+				}
+			});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,66 @@
+<html>
+	<head>
+		<title>Parse RSS Feed</title>
+		<style type="text/css">
+			body { font-family:"Trebuchet MS",verdana,arial;width:900px;margin:0 auto; }
+			ul{	border:1px solid #000;float:left;list-style:none;margin:0;padding:0;width:900px; }
+			li{	padding:5px;border:1px solid #000; }
+			h3 { color:brown;cursor:pointer;text-decoration:none; }
+			span{ font-size: 12px;font-weight:bold;}
+			.content{ display:none;}
+			div { width:100%;}
+			a{font-weight:bold;}
+		</style>
+	</head>
+	<body>
+		<div id="results">loading...
+		</div>
+		<script type="text/javascript" src="../jquery.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function()
+			{
+				$.get(
+					'feed.php',
+					{},
+					showPosts
+				);
+				function showPosts(data)
+				{
+					var posts = $(data).find('channel>item');
+					var str = '<ul>';
+					$.each(posts, function(index, value)
+					{
+						var title = $(value).find('title').text();
+						var link = $(value).find('link').text();
+						var description = $(value).find('description').text();
+						var comments = $(value).find('slash\\:comments').text();
+						var pDate = new Date($(value).find('pubDate').text());
+						var day = pDate.getDate();
+						var month = parseInt(pDate.getMonth(),10) + 1;
+						var year = pDate.getFullYear();
+						var fullDate = day + '-' + month + '-' + year;
+						str+= '<li>';
+						str+= '<div>';
+						str+= '<h3>' + title + '</h3>';
+						str+= '<div class="content">';
+						str+= '<p>';
+						str+= description;
+						str+= ' <a href="' + link + '" target="_blank">Read Full Post</a>';
+						str+= '</p>';
+						str+= '<span>Published on ' + fullDate + ' with ' + comments + ' comments</span>';
+						str+= '</div>';
+						str+= '</div>';
+						str+= '</li>';
+					});
+					str+= '</ul>';
+					$('#results').html(str);
+					$('#results ul li:even').css({'background-color': 'CornflowerBlue'});
+				}
+				$('h3').live('click',function()
+				{
+					$(this).next('div').slideToggle('fast');
+				});
+			});
+		</script>
+	</body>
+</html>

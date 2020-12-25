@@ -1,0 +1,53 @@
+<html>
+	<head>
+		<title>Cash Counter</title>
+		<style type="text/css">
+			body{ font-family:"Trebuchet MS",verdana,arial;width:900px;margin:0 auto; }
+			ul{ list-style:none;padding:10px; }
+			label{ display:block;float:left;width:75px; }
+		</style>
+	</head>
+	<body>
+		<ul>
+			<li>
+				<label>Start :</label><input type="text" id="start"/>
+			</li>
+			<li>
+				<label>End :</label><input type="text" id="end"/>
+			</li>
+			<li>
+				<h1 id="container"></h1>
+			</li>
+			<li>
+				<input type="button" id="change" value="Change" />
+			</li>
+		</ul>
+		<script type="text/javascript" src="../jquery.js"></script>
+		<script type="text/javascript" src="jquery.counter.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function()
+			{
+				$('#change').click(function()
+				{
+					if($('#start').val() != ''  && $('#end').val() != '')
+					{
+						var startVal = $('#start').val();
+						var endVal = $('#end').val();
+						$('#container').cashCounter
+						(
+							{
+								start: startVal,
+								end: endVal,
+								step: .4
+							}
+						);
+					}
+					else
+					{
+						$('#container').html('Please enter start and end values.');
+					}
+				});
+			});
+		</script>
+	</body>
+</html>

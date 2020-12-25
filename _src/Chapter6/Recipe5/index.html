@@ -1,0 +1,67 @@
+<html>
+	<head>
+		<title>Float</title>
+		<style type="text/css">
+			body{ font-family:"trebuchet MS",Arial;font-size:14px;width:500px;}
+			p
+			{
+				border:1px solid black;
+				height:200px;
+				width:300px;
+			}
+			.float
+			{
+				border:1px solid black;
+				position:absolute;
+				right:50px;
+				height:100px;
+				width:100px;
+				padding:10px;
+			}
+		</style>
+	</head>
+	<body>
+		<p>
+			This is some text
+		</p>
+		<p>
+			This is some text
+		</p>
+		<p>
+			This is some text
+		</p>
+		<p>
+			This is some text
+		</p>
+		<p>
+			This is some text
+		</p>
+		<p>
+			This is some text
+		</p>
+		<p>
+			This is some text
+		</p>
+		<p>
+			This is some text
+		</p>
+		
+		<div id="float" class="float">Floating box</div>
+		
+		<script type="text/javascript" src="../jquery.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function ()
+			{
+				var defaultOffset = 50;
+				function floatDiv()
+				{
+					var offsetTop = $(document).scrollTop() + defaultOffset;
+					$('#float').animate({top: offsetTop + "px"},{duration:500,queue:false});
+				}
+				
+				$(window).scroll(floatDiv);
+				floatDiv();
+			});
+		</script>
+	</body>
+</html>

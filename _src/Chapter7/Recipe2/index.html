@@ -1,0 +1,37 @@
+<html>
+	<head>
+		<title>jQuery Fading Menu</title>
+		<link rel="stylesheet" type="text/css" href="style.css">
+	</head>
+	<body>
+		<div>
+			<ul>
+				<li class="menuHeader about">
+					<a href="http://google.com">google
+					</a>
+				</li>
+				<li class="menuHeader products">
+					<a href="http://yahoo.com">yahoo</a>
+				</li>
+				<li class="menuHeader tech">
+					<a href="http://bing.com">bing</a>
+				</li>
+			</ul>
+		</div>
+		<script type="text/javascript" src="../jquery.js"></script>
+		<script type="text/javascript">
+$(document).ready(function(){
+	$("li.menuHeader").css("opacity","0.5");
+
+	$("li.menuHeader").hover(function () 
+	{
+		$(this).stop().animate({ opacity: 1}, 'slow');
+	},
+	function () 
+	{
+		$(this).stop().animate({ opacity: 0.5 }, 'slow');
+	});
+});	
+		</script>
+	</body>
+</html>

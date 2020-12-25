@@ -1,0 +1,43 @@
+<html>
+	<head>
+		<title>Strip tags</title>
+		<style type="text/css">
+			body{font-family:"Trebuchet MS",verdana;width:700px;}
+		</style>
+	</head>
+	<body>
+		<form>
+			<table>
+				<tr>
+					<td valign="top">Write some html in the box<br/>(Only allowed html tags are<br/>&lt;b&gt;,&lt;u&gt;,&lt;i&gt; and &lt;strong&gt;.<br/>Other tags will be removed):</td>
+					<td>
+						<textarea id="comment" cols="50" rows="10"></textarea>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top">This is how your html will look:</td>
+					<td>
+						<textarea id="stripped" cols="50" rows="10"></textarea>
+					</td>
+				</tr>
+			</table>
+			<input type="button" value="Check" id="check" />
+		</form>
+		<script type="text/javascript" src="../jquery.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function ()
+			{
+				$('#check').click(function()
+				{
+					$.post(
+						"validate.php", 
+						{ comment: $('#comment').val() },
+						function(data)
+						{
+							$('#stripped').val(data);
+						});
+				});
+			});
+		</script>
+	</body>
+</html>

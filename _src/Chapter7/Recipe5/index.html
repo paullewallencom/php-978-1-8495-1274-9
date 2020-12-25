@@ -1,0 +1,47 @@
+<html>
+	<head>
+		<title>Tabs</title>
+		<link rel="stylesheet" type="text/css" href="tabs.css" media="screen" />
+	</head>
+	<body>
+		<div class="tabContainer">
+			<ul class="tabHeader">
+				<li>Tab 1</li>
+				<li>Tab 2</li>
+				<li>Tab 3</li>
+			</ul>
+			<div class="contents">
+				<div class="tabContent">
+				  <h3>Tab 1</h3>
+				  Content for tab1
+				</div>
+				<div class="tabContent">
+					<h3>Tab 2</h3>
+					 Content for Tab 2
+				</div>
+				<div class="tabContent">
+					<h3>Tab 3</h3>
+					 Content for Tab 3
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="../jquery.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function ()
+			{
+				$('.tabContent:gt(0)').hide();
+				$('.tabHeader > li:eq(0)').addClass('active');
+				$('.tabHeader > li').click(showHideTabs);
+			});
+			function showHideTabs()
+			{
+				var allLi = $('.tabHeader > li').removeClass('active')
+				$(this).addClass('active');
+				
+				var index = allLi.index(this);
+				$('.tabContent:visible').hide();
+				$('.tabContent:eq('+index+')').show();
+			}
+		</script>
+	</body>
+</html>

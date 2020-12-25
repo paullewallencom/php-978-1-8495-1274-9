@@ -1,0 +1,93 @@
+<html>
+	<head>
+		<title>Youtube Video Search</title>
+		<style type="text/css">
+			body { font-family:"Trebuchet MS",verdana,arial;width:900px; }
+			fieldset { width:333px; }
+			ul{	margin:0;padding:0;list-style:none; }
+			li{	padding:5px; }
+			span{ display:block;float:left;width:150px; }
+			#results ul li{ float:left; background-color:#483D8B;color:#fff;margin:5px;width:120px; }
+			.error{ font-weight:bold; color:#ff0000; }
+			img{ border:0}
+		</style>
+	</head>
+	<body>
+		<form id="searchForm">
+			<fieldset>
+				<legend>Search Criteria</legend>
+				<ul>
+					<li>
+						<span>Enter query</span>
+						<input type="text" id="query"/>
+					</li>
+					<li>
+						<input type="button" value="Search" id="search"/>
+					</li>
+				</ul>
+			</fieldset>
+		</form>
+		<div id="results">
+		</div>
+		<script type="text/javascript" src="../jquery.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function()
+			{
+				$('#search').click(function()
+				{
+					var query = $.trim($('#query').val());
+					if(query == '')
+					{
+						$('#results').html('<li class="error">Please enter a query.</li>');
+						return;
+					}
+					$.get(
+						'http://gdata.youtube.com/feeds/api/videos?q=' + query + '&alt=json-in-script',
+						{},
+						showVideoList,
+						'jsonp'
+					);
+				});
+			});
+			function showVideoList(response)
+			{
+				var totalResults = response['feed']['openSearch$totalResults']['$t'];
+				if(parseInt(totalResults,10) > 0)
+				{
+					var entries = response.feed.entry;
+					var str = '<ul>';
+					for(var i=1; i< entries.length; i++)
+					{
+						var value = entries[i];
+						var title = value['title']['$t'];
+						var mediaGroup = value['media$group'];
+						var videoURL = mediaGroup['media$player'][0]['url'];
+						var thumbnail = mediaGroup['media$thumbnail'][0]['url'];
+						var thumbnailWidth = mediaGroup['media$thumbnail'][0]['width'];
+						var thumbnailHeight = mediaGroup['media$thumbnail'][0]['height'];
+						var numComments = value['gd$comments']['gd$feedLink']['countHint'];
+						var rating = parseFloat(value['gd$rating']['average']).toFixed(2);
+						str+= '<li>';
+						str+= '<a href="' + videoURL + '" target="_blank">';
+						str+= '<img src="'+thumbnail+'" width="'+thumbnailWidth+'" height="'+thumbnailWidth+'" title="' + title + '" />';
+						str+= '</a>';
+						str+= '<hr>';
+						str+= '<p style="width: 120px; font-size: 12px;">Comments: ' + numComments + '';
+						str+= '<br/>';
+						str+= 'Rating: ' + rating;
+						str+= '</p>';
+
+						str+= '</li>';
+					}
+					str+= '</ul>';
+					$('#results').html(str);
+				}
+				else
+				{
+					$('#results').html('<li class="error">No results.</li>');
+				}
+			}
+			
+		</script>
+	</body>
+</html>

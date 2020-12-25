@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>PHP, javascript and AJAX at vijayjoshi.org</title>
+	<atom:link href="http://www.vijayjoshi.org/feed/" rel="self" type="application/rss+xml" />
+	<link>http://www.vijayjoshi.org</link>
+	<description>php &#124; javascript &#124; ajax &#124; and all things web</description>
+
+	<lastBuildDate>Mon, 09 Aug 2010 12:03:19 +0000</lastBuildDate>
+	<generator>http://wordpress.org/?v=2.8.4</generator>
+	<language>en</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+			<item>
+
+		<title>19 Things NOT To Do When Building a Website</title>
+		<link>http://www.vijayjoshi.org/2010/08/09/19-things-not-to-do-when-building-a-website/</link>
+		<comments>http://www.vijayjoshi.org/2010/08/09/19-things-not-to-do-when-building-a-website/#comments</comments>
+		<pubDate>Mon, 09 Aug 2010 12:03:19 +0000</pubDate>
+		<dc:creator>Vijay Joshi</dc:creator>
+				<category><![CDATA[Web Design]]></category>
+
+		<category><![CDATA[Technology]]></category>
+
+		<guid isPermaLink="false">http://www.vijayjoshi.org/?p=570</guid>
+		<description><![CDATA[Here is a very useful post I found today. 19 mistakes to avoid while designing websites. Although, I am no expert on designing but I have found myself making some of these mistakes then and now.
+Some of my favorites from the list are:
+
+If your website does not work in Firefox, welcome to 2007 DUMBASS.
+
+
+If your [...]]]></description>
+		<wfw:commentRss>http://www.vijayjoshi.org/2010/08/09/19-things-not-to-do-when-building-a-website/feed/</wfw:commentRss>
+		<slash:comments>1</slash:comments>
+		</item>
+		<item>
+
+		<title>FAQ: Specifying css page breaks after or before elements for printing</title>
+		<link>http://www.vijayjoshi.org/2010/06/28/faq-specifyng-css-page-breaks-after-or-before-elements-for-printing/</link>
+		<comments>http://www.vijayjoshi.org/2010/06/28/faq-specifyng-css-page-breaks-after-or-before-elements-for-printing/#comments</comments>
+		<pubDate>Mon, 28 Jun 2010 11:34:54 +0000</pubDate>
+		<dc:creator>Vijay Joshi</dc:creator>
+				<category><![CDATA[css]]></category>
+
+		<guid isPermaLink="false">http://www.vijayjoshi.org/?p=560</guid>
+		<description><![CDATA[While printing web pages you can specify the browser to insert page breaks before or after certain elements. This can be handy for printing documents like tickets, vouchers where information must be grouped and displayed on separate pages.
+There are 2 CSS properties which can be used to insert page breaks in HTML while printing. These [...]]]></description>
+		<wfw:commentRss>http://www.vijayjoshi.org/2010/06/28/faq-specifyng-css-page-breaks-after-or-before-elements-for-printing/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>5 must have firefox addons for every web developer</title>
+
+		<link>http://www.vijayjoshi.org/2010/01/21/5-must-have-firefox-addons-for-every-web-developer/</link>
+		<comments>http://www.vijayjoshi.org/2010/01/21/5-must-have-firefox-addons-for-every-web-developer/#comments</comments>
+		<pubDate>Thu, 21 Jan 2010 05:24:58 +0000</pubDate>
+		<dc:creator>Vijay Joshi</dc:creator>
+				<category><![CDATA[Technology]]></category>
+		<category><![CDATA[javascript]]></category>
+		<category><![CDATA[browser]]></category>
+
+		<category><![CDATA[firefox]]></category>
+		<category><![CDATA[IE]]></category>
+
+		<guid isPermaLink="false">http://www.vijayjoshi.org/?p=509</guid>
+		<description><![CDATA[Being a web developer there are some tools which I need and use on daily basis. Here are 5 such addons I think every web developer should install on their firefox.
+1- Web developer toolbar
+
+Home: http://chrispederick.com/work/web-developer/
+Install: https://addons.mozilla.org/en-US/firefox/addon/60
+
+
+ 
+
+
+This addon adds a toolbar and a menu to firefox. The toolbar contains several mini tools in it to [...]]]></description>
+		<wfw:commentRss>http://www.vijayjoshi.org/2010/01/21/5-must-have-firefox-addons-for-every-web-developer/feed/</wfw:commentRss>
+		<slash:comments>2</slash:comments>
+		</item>
+
+		<item>
+		<title>How to dynamically load the Google Maps javascript API (On demand loading)</title>
+		<link>http://www.vijayjoshi.org/2010/01/19/how-to-dynamically-load-the-google-maps-javascript-api-on-demand-loading/</link>
+		<comments>http://www.vijayjoshi.org/2010/01/19/how-to-dynamically-load-the-google-maps-javascript-api-on-demand-loading/#comments</comments>
+		<pubDate>Tue, 19 Jan 2010 10:21:25 +0000</pubDate>
+		<dc:creator>Vijay Joshi</dc:creator>
+
+				<category><![CDATA[Technology]]></category>
+		<category><![CDATA[javascript]]></category>
+		<category><![CDATA[google map]]></category>
+
+		<guid isPermaLink="false">http://www.vijayjoshi.org/?p=481</guid>
+		<description><![CDATA[Normally google maps js api is loaded at the time of page load via a script tag with src set. If map is not so major feature of your application or you want to reduce page download time, you can defer loading the javascript load it when required.
+This is a javascript pattern called On demand [...]]]></description>
+		<wfw:commentRss>http://www.vijayjoshi.org/2010/01/19/how-to-dynamically-load-the-google-maps-javascript-api-on-demand-loading/feed/</wfw:commentRss>
+		<slash:comments>5</slash:comments>
+
+		</item>
+		<item>
+		<title>Happy New Year!</title>
+		<link>http://www.vijayjoshi.org/2010/01/01/happy-new-year/</link>
+		<comments>http://www.vijayjoshi.org/2010/01/01/happy-new-year/#comments</comments>
+		<pubDate>Fri, 01 Jan 2010 17:29:22 +0000</pubDate>
+		<dc:creator>Vijay Joshi</dc:creator>
+
+				<category><![CDATA[Misc]]></category>
+
+		<guid isPermaLink="false">http://www.vijayjoshi.org/?p=478</guid>
+		<description><![CDATA[Hi friends,
+I wish you all a very happy and prosperous new year with lots of happiness.
+I hope that the posts I publish here are useful for you and your questions are answered. This year I promise that I will try to write better posts and write more regularly.
+Best Wishes once again.  
+Tweet This!Share this [...]]]></description>
+		<wfw:commentRss>http://www.vijayjoshi.org/2010/01/01/happy-new-year/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+
+		<title>How to restore and backup mysql databases?</title>
+		<link>http://www.vijayjoshi.org/2009/12/19/how-to-restore-and-backup-mysql-databases/</link>
+		<comments>http://www.vijayjoshi.org/2009/12/19/how-to-restore-and-backup-mysql-databases/#comments</comments>
+		<pubDate>Sat, 19 Dec 2009 07:32:07 +0000</pubDate>
+		<dc:creator>Vijay Joshi</dc:creator>
+				<category><![CDATA[Technology]]></category>
+
+		<guid isPermaLink="false">http://www.vijayjoshi.org/?p=471</guid>
+		<description><![CDATA[I forget the commands everytime I backup/restore mysql databases. For this reason I am writing them down for my reference and hopefully others will also find them useful.
+Suppose my database credentials are as follow:
+
+db username:  vijay
+db password:  somepwd
+database:     catalogue
+
+Taking backup of database
+Go to the command line (not mysql command line) and fire the following command:
+
+mysqldump [...]]]></description>
+		<wfw:commentRss>http://www.vijayjoshi.org/2009/12/19/how-to-restore-and-backup-mysql-databases/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>How to create excel files in PHP?</title>
+
+		<link>http://www.vijayjoshi.org/2009/12/15/how-to-create-excel-files-in-php/</link>
+		<comments>http://www.vijayjoshi.org/2009/12/15/how-to-create-excel-files-in-php/#comments</comments>
+		<pubDate>Tue, 15 Dec 2009 09:04:47 +0000</pubDate>
+		<dc:creator>Vijay Joshi</dc:creator>
+				<category><![CDATA[FAQ]]></category>
+		<category><![CDATA[php]]></category>
+
+		<guid isPermaLink="false">http://www.vijayjoshi.org/?p=454</guid>
+		<description><![CDATA[Some time ago I found a class on phpclasses.org by Harish Chauhan which makes it incredibly easy to generate simple excel spreadsheets from PHP. I found it useful so I want to share its usgae with readers too. I also made some changes to the class for styling the rows.
+
+
+
+Here is the process:
+1-  Include [...]]]></description>
+		<wfw:commentRss>http://www.vijayjoshi.org/2009/12/15/how-to-create-excel-files-in-php/feed/</wfw:commentRss>
+		<slash:comments>1</slash:comments>
+		</item>
+		<item>
+		<title>Getting and setting value of html elements using jQuery</title>
+
+		<link>http://www.vijayjoshi.org/2009/12/09/getting-and-setting-value-of-html-elements-using-jquery/</link>
+		<comments>http://www.vijayjoshi.org/2009/12/09/getting-and-setting-value-of-html-elements-using-jquery/#comments</comments>
+		<pubDate>Wed, 09 Dec 2009 05:48:16 +0000</pubDate>
+		<dc:creator>Vijay Joshi</dc:creator>
+				<category><![CDATA[FAQ]]></category>
+		<category><![CDATA[javascript]]></category>
+		<category><![CDATA[jQuery]]></category>
+
+		<guid isPermaLink="false">http://www.vijayjoshi.org/?p=446</guid>
+		<description><![CDATA[If you have started using jQuery recently and you  are used to DOM methods of getting and setting values for form and html elements, this article is for you.
+Using jQuery can be confusing in the beginning but it is a lot easier once you get hold of it. In this post I will summarize methods [...]]]></description>
+		<wfw:commentRss>http://www.vijayjoshi.org/2009/12/09/getting-and-setting-value-of-html-elements-using-jquery/feed/</wfw:commentRss>
+		<slash:comments>4</slash:comments>
+		</item>
+		<item>
+		<title>Creating an XML in PHP using DOMDocument</title>
+
+		<link>http://www.vijayjoshi.org/2009/11/27/creating-an-xml-in-php-using-domdocument/</link>
+		<comments>http://www.vijayjoshi.org/2009/11/27/creating-an-xml-in-php-using-domdocument/#comments</comments>
+		<pubDate>Fri, 27 Nov 2009 06:59:05 +0000</pubDate>
+		<dc:creator>Vijay Joshi</dc:creator>
+				<category><![CDATA[php]]></category>
+		<category><![CDATA[xml]]></category>
+
+		<guid isPermaLink="false">http://www.vijayjoshi.org/?p=432</guid>
+		<description><![CDATA[In this tutorial you will learn how to create XML documents using PHP&#8217;s DOMDocument class.
+First things first.There are 3 things that you should always keep in mind about XML. In short, XML has 3 main  components.
+
+ Elements, which we also call nodes. e.g.
+
+ &#60;name/&#62;
+
+
+Attributes e.g
+
+ &#60;name type=&#34;first&#34;/&#62;
+
+Here type is an attribute.
+Data/text nodes
+
+&#60;name type=&#34;first&#34;&#62;Johnson&#60;/name&#62;
+
+ Here [...]]]></description>
+		<wfw:commentRss>http://www.vijayjoshi.org/2009/11/27/creating-an-xml-in-php-using-domdocument/feed/</wfw:commentRss>
+		<slash:comments>1</slash:comments>
+		</item>
+		<item>
+		<title>New Google website translator gadget</title>
+
+		<link>http://www.vijayjoshi.org/2009/10/06/new-google-website-translator-gadget/</link>
+		<comments>http://www.vijayjoshi.org/2009/10/06/new-google-website-translator-gadget/#comments</comments>
+		<pubDate>Tue, 06 Oct 2009 10:26:00 +0000</pubDate>
+		<dc:creator>Vijay Joshi</dc:creator>
+				<category><![CDATA[Misc]]></category>
+		<category><![CDATA[Technology]]></category>
+		<category><![CDATA[Google]]></category>
+
+		<guid isPermaLink="false">http://www.vijayjoshi.org/?p=415</guid>
+		<description><![CDATA[It was International Translation Day on 30th September and Google gifted users a new version of their website translator gadget.
+From usability point of view this version is far more better then previous one and supports 51 languages. Earlier version of this gadget was a bit ugly in the manner it worked. It used to load [...]]]></description>
+		<wfw:commentRss>http://www.vijayjoshi.org/2009/10/06/new-google-website-translator-gadget/feed/</wfw:commentRss>
+		<slash:comments>1</slash:comments>
+		</item>
+	</channel>
+</rss>
